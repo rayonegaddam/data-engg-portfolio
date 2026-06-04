@@ -1,59 +1,48 @@
-## Sales Analysis Data Pipeline
+# Sales Analysis Data Pipeline
 
-Objective:
-This project demonstrates an end-to-end data workflow for analyzing retail sales data. It covers reading raw data, cleaning and transforming it using Python, storing it in a MySQL database, and visualizing insights through Power BI.
+## 📌 Project Overview
+This project demonstrates an end-to-end data workflow designed to ingest, process, and analyze retail transaction logs. The pipeline covers programmatic data extraction, multi-stage cleaning and data hygiene validation using Python, structured relational persistence inside a MySQL database, and final business intelligence reporting via Power BI.
 
-⚙️ Tech Stack: Python, MySQL, PowerBI
+* **⚙️ Tech Stack:** Python (Pandas, SQLAlchemy, PyMySQL), MySQL, Power BI
 
-✅ Dataset Overview
-Fields:
+---
 
-OrderID, Order Date
+### ✅ Dataset Constraints & Structure
+* **Core Dimensions:** OrderID, Order Date, Segment, Ship Mode, Category, Sub-Category
+* **Geographic Tiers:** Country, State, City, Region
+* **Financial Attributes:** Discount, Sales, Profit
+* **Sample Volumetrics:** ~8,037 rows
 
-Country, State, City, Region
+---
 
-Segment, Ship Mode, Category, Sub-Category
+### 📌 Workflow
 
-Discount, Sales, Profit
+#### 1️⃣ Data Ingestion & Exploration
+* Loaded raw source matrices into the runtime using Pandas (`read_csv`).
+* Evaluated data boundaries and array profiling through structural and descriptive methods (`.shape`, `.info()`, `.describe()`, `.unique()`).
 
-Sample size: ~8,037 rows
+#### 2️⃣ Programmatic Data Cleaning & Quality Assurance
+* Isolated and eliminated incomplete null sets and exact transactional duplicates to prevent double-counting.
+* Evaluated records for upstream system errors by auditing core logical contradictions:
+  * Negative absolute values for sales transactions.
+  * Disconnected promotional anomalies (discounts scaling above 100%).
+* Verified structural data types, converting timestamp text to native datetimes, numerical data to floats, and low-cardinality values to categories.
+* Sanitized and normalized string text padding to ensure categorical consistency across charts.
 
-📌 Workflow
+#### 3️⃣ Feature Engineering & Transformation
+* Extracted isolated temporal dimensions (`Year`, `Month`) from the order timeline to optimize down-stream time-series calculations.
+* Validated `OrderID` structural boundaries and committed the refined dataframe array.
 
-1️⃣ Data Reading & Exploration
-Loaded data using Pandas (read_csv).
+#### 4️⃣ Database Modeling & Persistence
+* Orchestrated data table migration to a local MySQL instance using an engine connection pool managed by SQLAlchemy and PyMySQL.
+* Enforced an organized destination schema (`cleaned_orders`) with explicit variable datatypes optimized for rapid relational aggregation.
 
-Explored structure with .shape, .info(), .describe(), .unique().
+#### 5️⃣ Business Intelligence Reporting & KPI Analysis
+The relational backend database table was connected directly to the dashboard visualization layer to calculate and present high-impact performance grids:
 
-2️⃣ Data Cleaning
-Dropped nulls and exact duplicates.
+* **Financial Performance Baselines:** Summary KPI arrays calculate absolute operational health at a single glance, highlighting **$2M in Total Sales**, **$283K in Total Net Profit**, **30K Units Sold**, and a steady **12% average Profit Margin**.
+* **Promotion & Margin Stability Analysis:** Evaluated promotional business impact by mapping discount variables against net unit margins, identifying distinct pricing thresholds where excessive discount rates began directly eroding profits.
+* **Market Demographics & Logistical Segmentation:** Segmented operational volumes across customer types (Consumer, Corporate, Home Office), item lines (Technology, Office Supplies, Furniture), and international boundaries—explicitly isolating dominant profit centers like the United Kingdom and Germany.
 
-Checked for logical errors:
-
-Negative sales or profit
-
-Discounts > 100%
-
-Verified data types (datetime, float, category).
-
-Normalized text fields for consistency.
-
-3️⃣ Data Transformation
-Created new date features: year, month.
-
-Verified uniqueness of order_id as needed.
-
-Saved the final cleaned DataFrame.
-
-4️⃣ Data Modelling
-Used SQLAlchemy and PyMySQL to export the clean DataFrame to a MySQL database table (cleaned_orders).
-
-Defined a clear schema with correct column types for reporting.
-
-5️⃣ Reporting
-Connected Power BI Desktop to the MySQL database.
-
-Built interactive dashboards
-
-<img width="1100" height="700" alt="image" src="https://github.com/user-attachments/assets/3c151636-38c1-422c-88f7-01e1fd342a7b" />
+<img width="1269" height="715" alt="image" src="https://github.com/user-attachments/assets/b2f76274-74a3-42c2-b627-49153917a208" />
 
