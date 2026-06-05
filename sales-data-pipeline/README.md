@@ -1,4 +1,4 @@
-# Sales Analysis Data Pipeline
+# Sales Data Pipeline
 
 ## 📌 Project Overview
 This project demonstrates an end-to-end data workflow designed to ingest, process, and analyze retail transaction logs. The pipeline covers programmatic data extraction, multi-stage cleaning and data hygiene validation using Python, structured relational persistence inside a MySQL database, and final business intelligence reporting via Power BI.
