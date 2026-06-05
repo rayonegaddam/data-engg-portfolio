@@ -1,7 +1,6 @@
-# 👋 Rayone Gaddam | Data Analyst Portfolio
+# 👋 Rayone Gaddam | Data Portfolio
 
-Welcome to my comprehensive Data Analytics Portfolio — a curated collection of end-to-end projects showcasing my skills in data wrangling, analysis, visualization, and storytelling across diverse business domains.  Inside this repository, you’ll find:  Well-documented projects demonstrating data analytical skills.With 3+ years of experience spanning **data operations, analytics modeling**, and **visual storytelling**, I combine technical skills with business understanding to drive actionable insights.
-
+Welcome to my comprehensive Data Portfolio — a curated collection of end-to-end projects showcasing my skills in data-architecture, data wrangling, analysis, visualization, and storytelling across diverse business domains.  Inside this repository, you’ll find:  Well-documented projects demonstrating data engineering and analytical skills.
 ---
 
 ## 📌 Featured Projects
@@ -12,8 +11,9 @@ A complete retail pipeline built with:
 - 📊 SQL for modeling
 - 📈 Power BI dashboards for performance metrics
 
-### 📱 User Engagement Analytics (Web & App)
+### 📱 User Engagement Analytics (Web & App) {_Pipeline_}
 - Collected website and app data in adherence to GDPR laws and user privacy
+- Architechted google tag integrations within websites using data layers creating data pipelines.
 - Performed Cohort analysis, user engagement and traffic acquisition analysis
 - Provided effective visualizations for business owners/stakeholders
 - Tools: Python, GA4, Power BI
@@ -21,7 +21,7 @@ A complete retail pipeline built with:
 
 ## 🧰 Tools & Tech Stack
 
-- **Languages**: Python, JavaScript
+- **Languages**: Python, JavaScript, SQL
 - **BI Tools**: PowerBI, Tableau, Google Analytics 4
 - **Databases**: MySQL, PostGres
 
